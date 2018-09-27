@@ -12,7 +12,13 @@ const routers = [
   {
     path: '/frame/index',
     name: 'index',
-    component: resolve => require(['views/index'], resolve)
+    component: resolve => require(['views/index'], resolve),
+    children: [
+      {
+        path: '/masterData/patient',
+        component: resolve => require(['views/login'], resolve)
+      }
+    ]
   }
 ]
 

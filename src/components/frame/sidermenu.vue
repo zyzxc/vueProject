@@ -1,12 +1,13 @@
 <template>
   <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
-    <el-menu :default-active="$route.path" class="el-menu-vertical-demo" unique-opened v-show="!collapsed">
+    <el-menu :default-active="$route.path" class="el-menu-vertical-demo" unique-opened router v-show="!collapsed"
+             @handleselect="handleselect">
       <template v-for="(item,index) in menuData">
         <el-submenu :index="item.name">
           <template slot="title">
             <i :class="item.iconCls">{{item.name}}</i>
           </template>
-          <el-menu-item v-for="itm in item.children" :index="itm.name">
+          <el-menu-item v-for="(itm,index) in item.children" :index="itm.menuUrl" :key="index">
             {{itm.name}}
           </el-menu-item>
         </el-submenu>
@@ -27,6 +28,11 @@
     data() {
       return {
         menuData: MENUDATA
+      }
+    },
+    methods: {
+      handleselect(a, b) {
+        console.log(a, b)
       }
     }
   }

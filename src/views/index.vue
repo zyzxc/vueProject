@@ -3,6 +3,16 @@
     <zxc-header @collapsed="collapse" :collapsed="collapsed"></zxc-header>
     <el-col class="main" :span="24">
       <sider-menu :collapsed="collapsed"></sider-menu>
+      <section class="content-container">
+        <div class="content">
+          <el-col :span="24" class="breadcrumb-container">
+
+          </el-col>
+          <el-col :span="24" class="content-wrapper">
+            <router-view></router-view>
+          </el-col>
+        </div>
+      </section>
     </el-col>
   </el-row>
 </template>
@@ -39,6 +49,17 @@
       top: 60px;
       bottom: 0;
       overflow: hidden;
+    }
+  }
+
+  .content-container {
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: scroll;
+    padding: 20px;
+    .content-wrapper {
+      background-color: #fff;
+      box-sizing: border-box;
     }
   }
 </style>
